@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.search-card {
+  padding: 1rem;
+  width: 80%;
+  /* height: 100%; */
+  border-radius : 8px;
+  display: inline-block;
+  margin: 1rem 2rem;
+  cursor: pointer;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+}
+
+.search-field {
+  width: 100%;
+}

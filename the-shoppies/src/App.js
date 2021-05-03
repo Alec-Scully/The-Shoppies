@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar.js';
 function App() {
   return (
     <div>
+      <h1>The Shoppies</h1>
       <SearchBar></SearchBar>
       <MovieList></MovieList>
       <Nominations></Nominations>
