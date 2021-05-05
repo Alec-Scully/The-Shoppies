@@ -27,3 +27,26 @@ code {
 .search-field {
   width: 100%;
 }
+
+.movie-list {
+  padding: 1rem;
+  width: 80%;
+  height: 40rem;
+  border-radius : 8px;
+  display: inline-block;
+  margin: 1rem 2rem;
+  cursor: pointer;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+}
+
+.movie-card {
+  padding: 1rem;
+  width: 20rem;
+  height: 25rem;
+  display: inline-block;
+  margin: 1rem 2rem;
+  cursor: pointer;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+}
