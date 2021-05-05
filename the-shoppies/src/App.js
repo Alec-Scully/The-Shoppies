@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     movies: [],
     nominations: [],
-    list: false
+    list: true
+    // list: false
   }
 
   searchMovie = (title) => {
@@ -21,11 +22,15 @@ class App extends Component {
   }
 
   addToNominations = (movie) => {
-
+    let newNom = [...this.state.nominations, movie]
+    this.setState({nominations: newNom})
+    //add to local storage
   }
 
   removeFromNominations = (movie) => {
-    
+    let newNom = this.state.nominations.filter(nomination => movie !== nomination)
+    this.setState({nominations: newNom})
+    //add to local storage
   }
 
   render() {
@@ -34,14 +39,14 @@ class App extends Component {
         <h1>The Shoppies</h1>
         <SearchBar searchMovie={this.searchMovie}></SearchBar>
         {this.state.list ?
-          <MovieList movies={this.state.movies}></MovieList>
+          <MovieList movies={this.state.movies} addToNominations={this.addToNominations}></MovieList>
           :
-          <MoviePosters movies={this.state.movies}></MoviePosters>
+          <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations}></MoviePosters>
         }
         {this.state.list ?
-          <ListNominations></ListNominations>
+          <ListNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></ListNominations>
           :
-          <PosterNominations></PosterNominations>
+          <PosterNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></PosterNominations>
         }
       </div>
     );

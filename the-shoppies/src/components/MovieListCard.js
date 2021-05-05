@@ -5,7 +5,7 @@ class MovieListCard extends Component{
     render() {
         return(
             <div className="movie-card-list">
-                <li>{this.props.movie.Title} ({this.props.movie.Year}) <button> Nominate</button></li> 
+                <li>{this.props.movie.Title} ({this.props.movie.Year}) <button onClick={() => this.props.addToNominations(this.props.movie)}> Nominate</button></li> 
                 <br/>
             </div>
         )

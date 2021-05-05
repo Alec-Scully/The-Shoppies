@@ -9,7 +9,7 @@ class MoviePosters extends Component {
                 <br />
                 {this.props.movies ?
                         <ul>
-                            {this.props.movies.map(movie => <MoviePosterCard key={movie.imdbID} movie={movie}></MoviePosterCard>)}
+                            {this.props.movies.map(movie => <MoviePosterCard key={movie.imdbID} movie={movie} addToNominations={this.props.addToNominations}></MoviePosterCard>)}
                         </ul>
                     :
                         null}

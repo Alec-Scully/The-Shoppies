@@ -7,12 +7,10 @@ class MovieList extends Component {
         return (
             <div className="split left">
                 This is my MovieList Component
-                    <div>
-                        {this.props.movies ?
-                            this.props.movies.map(movie => <MovieListCard key={movie.imdbID} movie={movie}></MovieListCard>)
-                            :
-                            null}
-                    </div>
+                {this.props.movies ?
+                    this.props.movies.map(movie => <MovieListCard key={movie.imdbID} movie={movie} addToNominations={this.props.addToNominations}></MovieListCard>)
+                    :
+                    null}
             </div>
         )
     }
