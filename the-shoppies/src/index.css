@@ -14,12 +14,11 @@ code {
 
 .search-card {
   padding: 1rem;
-  width: 80%;
+  width: 90%;
   /* height: 100%; */
   border-radius : 8px;
   display: inline-block;
   margin: 1rem 2rem;
-  cursor: pointer;
   border: grey solid 1px;
   box-shadow: 3px 4px;
 }
@@ -28,25 +27,64 @@ code {
   width: 100%;
 }
 
-.movie-list {
-  padding: 1rem;
-  width: 80%;
-  height: 40rem;
-  border-radius : 8px;
-  display: inline-block;
-  margin: 1rem 2rem;
-  cursor: pointer;
-  border: grey solid 1px;
-  box-shadow: 3px 4px;
-}
-
-.movie-card {
+.movie-card-poster {
   padding: 1rem;
   width: 20rem;
   height: 25rem;
   display: inline-block;
   margin: 1rem 2rem;
-  cursor: pointer;
   border: grey solid 1px;
   box-shadow: 3px 4px;
+
+}
+
+.movie-card img {
+  height: 90%;
+}
+
+.split {
+  padding: 1rem;
+  width: 40%;
+  height: 40rem;
+  border-radius : 8px;
+  display: inline-block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.poster-container {
+  padding: 1rem;
+  width: 90%;
+  height: 35rem;
+  border-radius : 8px;
+  display: inline-block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.poster-nominations {
+  padding: 1rem;
+  width: 90%;
+  height: 20rem;
+  border-radius : 8px;
+  display: inline-block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+  right: 0;
+  overflow-x: hidden;
 }

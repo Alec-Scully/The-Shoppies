@@ -1,17 +1,18 @@
-import React, { Component } from 'react'
-import MovieCard from './MovieCard.js'
+import React, { Component } from 'react';
+import MovieListCard from './MovieListCard.js';
 
 class MovieList extends Component {
 
-    render(){
+    render() {
         return (
-            <div className="movie-list">
+            <div className="split left">
                 This is my MovieList Component
-                <br/>
-                {this.props.movies ? 
-                this.props.movies.map( movie => <MovieCard key={movie.id} movie={movie}></MovieCard>)
-                :
-                null}
+                    <div>
+                        {this.props.movies ?
+                            this.props.movies.map(movie => <MovieListCard key={movie.imdbID} movie={movie}></MovieListCard>)
+                            :
+                            null}
+                    </div>
             </div>
         )
     }

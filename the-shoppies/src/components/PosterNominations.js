@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Nominations extends Component {
+class PosterNominations extends Component {
     render(){
         return (
-            <div>
+            <div className="poster-nominations">
                 This is my Nominations Component
             </div>
         )
     }
 }
 
-export default Nominations;
+export default PosterNominations;
