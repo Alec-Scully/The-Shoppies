@@ -8,9 +8,12 @@ class MovieList extends Component {
             <div className="split left">
                 This is my MovieList Component
                 {this.props.movies ?
-                    this.props.movies.map(movie => <MovieListCard key={movie.imdbID} movie={movie} addToNominations={this.props.addToNominations}></MovieListCard>)
+                    <ul>
+                        {this.props.movies.map(movie => <MovieListCard key={movie.imdbID} movie={movie} addToNominations={this.props.addToNominations} disableButton={this.props.disableButton}></MovieListCard>)}
+                    </ul>
                     :
-                    null}
+                    null
+                }
             </div>
         )
     }

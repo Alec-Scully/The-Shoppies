@@ -8,7 +8,7 @@ class MoviePosterCard extends Component {
                 {this.props.movie.Title} <br/>
                 <img src={this.props.movie.Poster} alt={this.props.movie.Title + " Poster"}></img><br/>
                 Release Year: {this.props.movie.Year}
-                <button onClick={() => this.props.addToNominations(this.props.movie)}> Nominate</button>
+                <button onClick={() => this.props.addToNominations(this.props.movie)} disabled={this.props.disableButton(this.props.movie)}> Nominate</button>
             </div>
         )
     }

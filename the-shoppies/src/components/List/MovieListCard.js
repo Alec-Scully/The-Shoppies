@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-class MovieListCard extends Component{
+class MovieListCard extends Component {
 
     render() {
-        return(
+        return (
             <div className="movie-card-list">
-                <li>{this.props.movie.Title} ({this.props.movie.Year}) <button onClick={() => this.props.addToNominations(this.props.movie)}> Nominate</button></li> 
+                <li>{this.props.movie.Title} ({this.props.movie.Year}) <button onClick={() => this.props.addToNominations(this.props.movie)} disabled={this.props.disableButton(this.props.movie)}> Nominate</button></li>
                 <br/>
             </div>
         )

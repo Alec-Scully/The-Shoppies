@@ -43,6 +43,15 @@ class App extends Component {
     this.setState({list: newView})
   }
 
+  disableButton = (movie) => {
+    let nominatedIds = this.state.nominations.map(nom => nom.imdbID)
+    if ( this.state.nominations.length >= 5 || nominatedIds.includes(movie.imdbID)) {
+        return true
+    } else {
+        return false
+    }
+}
+
   render() {
     return (
       <div>
@@ -50,9 +59,9 @@ class App extends Component {
         <SearchBar searchMovie={this.searchMovie}></SearchBar> 
         <ViewChoice list={this.state.list} changeView={this.changeView}></ViewChoice>
         {this.state.list ?
-          <MovieList movies={this.state.movies} addToNominations={this.addToNominations} nominations={this.state.nominations}></MovieList>
+          <MovieList movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MovieList>
           :
-          <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations} nominations={this.state.nominations}></MoviePosters>
+          <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MoviePosters>
         }
 
         {this.state.list ?
