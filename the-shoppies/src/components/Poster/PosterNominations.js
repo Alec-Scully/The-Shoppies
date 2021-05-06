@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NominationCard from './NominationCard'
+import NominationCard from '../NominationCard'
 
 class PosterNominations extends Component {
     render(){

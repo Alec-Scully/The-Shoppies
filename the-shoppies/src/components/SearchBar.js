@@ -9,7 +9,6 @@ class SearchBar extends Component {
     setTitle = (title) => {
         this.setState({title: title.split(" ").join("+")})
         setTimeout(() => { this.props.searchMovie(this.state.title) }, 500);
-        // this.props.searchMovie(this.state.title)
     }
 
     render() {
