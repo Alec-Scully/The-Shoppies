@@ -5,6 +5,8 @@ import MoviePosters from './components/Poster/MoviePosters';
 import PosterNominations from './components/Poster/PosterNominations';
 import SearchBar from './components/SearchBar.js';
 import ViewChoice from './components/ViewChoice.js'
+import Header from './components/Header.js'
+// import Banner from 'react-js-banner'
 
 class App extends Component {
 
@@ -16,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({nominations: JSON.parse(localStorage.getItem("Nominations"))})
+    this.setState({ nominations: JSON.parse(localStorage.getItem("Nominations")) })
   }
 
   searchMovie = (title) => {
@@ -28,47 +30,54 @@ class App extends Component {
 
   addToNominations = (movie) => {
     let newNom = [...this.state.nominations, movie]
-    this.setState({nominations: newNom})
+    this.setState({ nominations: newNom })
     localStorage.setItem("Nominations", JSON.stringify(newNom))
   }
 
   removeFromNominations = (movie) => {
     let newNom = this.state.nominations.filter(nomination => movie !== nomination)
-    this.setState({nominations: newNom})
+    this.setState({ nominations: newNom })
     localStorage.setItem("Nominations", JSON.stringify(newNom))
   }
 
   changeView = () => {
     let newView = !this.state.list
-    this.setState({list: newView})
+    this.setState({ list: newView })
   }
 
   disableButton = (movie) => {
     let nominatedIds = this.state.nominations.map(nom => nom.imdbID)
-    if ( this.state.nominations.length >= 5 || nominatedIds.includes(movie.imdbID)) {
-        return true
+    if (this.state.nominations.length >= 5 || nominatedIds.includes(movie.imdbID)) {
+      return true
     } else {
-        return false
+      return false
     }
-}
+  }
 
   render() {
     return (
       <div>
-        <h1>The Shoppies</h1>
-        <SearchBar searchMovie={this.searchMovie}></SearchBar> 
-        <ViewChoice list={this.state.list} changeView={this.changeView}></ViewChoice>
-        {this.state.list ?
-          <MovieList movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MovieList>
+        {this.state.nominations.length >= 5 ?
+          <Header></Header>
           :
-          <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MoviePosters>
+          null
         }
+        <div className="content">
+          <h1>The Shoppies</h1>
+          <SearchBar searchMovie={this.searchMovie}></SearchBar>
+          <ViewChoice list={this.state.list} changeView={this.changeView}></ViewChoice>
+          {this.state.list ?
+            <MovieList movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MovieList>
+            :
+            <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MoviePosters>
+          }
 
-        {this.state.list ?
-          <ListNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></ListNominations>
-          :
-          <PosterNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></PosterNominations>
-        }
+          {this.state.list ?
+            <ListNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></ListNominations>
+            :
+            <PosterNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></PosterNominations>
+          }
+        </div>
       </div>
     );
   }

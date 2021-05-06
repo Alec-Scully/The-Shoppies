@@ -88,3 +88,27 @@ code {
   right: 0;
   overflow-x: hidden;
 }
+
+.header {
+  padding: 10px 16px;
+  background: #004c3f;
+  color: #FFF;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
