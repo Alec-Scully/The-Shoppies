@@ -14,6 +14,9 @@ class MovieList extends Component {
                     :
                     null
                 }
+                <button onClick={() => this.props.changePage(0)} disabled={this.props.disablePageButton(0)}> Prev </button> 
+                <button onClick={() => this.props.changePage(1)} disabled={this.props.disablePageButton(1)}> Next </button>
+                <p> {`Showing Results ${(this.props.page * 10) - 9} - ${this.props.page * 10} out of ${this.props.totalResults}`} </p> 
             </div>
         )
     }

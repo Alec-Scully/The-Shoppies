@@ -14,7 +14,10 @@ class App extends Component {
     movies: [],
     nominations: [],
     list: true,
-    page: 1
+    page: 1,
+    totalResults: 1,
+    totalPages: 1,
+    searchTerm: ""
   }
 
   componentDidMount = () => {
@@ -22,10 +25,16 @@ class App extends Component {
   }
 
   searchMovie = (title) => {
+    this.setState({searchTerm: title})
+    this.setState({page: 1})
     fetch(`http://www.omdbapi.com/?apikey=5d8af6ae&s=${title}&y=&plot=short&type=movie&page=1`)
       .then(r => r.json())
-      .then(movieData => this.setState({ movies: movieData.Search }))
+      .then(movieData => this.setState({ 
+        movies: movieData.Search, 
+        totalResults: movieData.totalResults 
+      }))
       .catch((error) => console.log(error))
+      this.totalPages(this.state.totalResults)
   }
 
   addToNominations = (movie) => {
@@ -54,6 +63,72 @@ class App extends Component {
     }
   }
 
+  disablePageButton = (direction) => {
+    switch (direction) {
+      case 0:
+        if (this.state.page === 1) {
+          return true
+        } else {
+          return false
+        }
+      case 1:
+        if (this.state.page === this.state.totalPages) {
+          return true
+        } else {
+          return false
+        }
+      default: 
+        return false
+    }
+  }
+
+  showView = () => {
+    switch (this.state.list) {
+      case true:
+        return (
+          <div>
+            <MovieList movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton} page={this.state.page} changePage={this.changePage} disablePageButton={this.disablePageButton} totalPages={this.state.totalPages} totalResults={this.state.totalResults}></MovieList>
+            <ListNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></ListNominations>
+          </div>
+        )
+      case false:
+        return (
+          <div>
+            <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton} page={this.state.page} changePage={this.changePage} disablePageButton={this.disablePageButton} totalPages={this.state.totalPages} totalResults={this.state.totalResults}></MoviePosters>
+            <PosterNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></PosterNominations>
+          </div>
+        )
+      default: 
+          return null
+    }
+  }
+
+  totalPages = (totalResults) => {
+    if (totalResults % 10 === 0) {
+      this.setState({totalPages: ~~(totalResults/10)})
+    } else {
+      this.setState({totalPages: ~~(totalResults/10) + 1})
+    }
+  }
+
+  changePage = (direction) => {
+    let page
+    switch (direction) {
+      case 0:
+        page = this.state.page - 1
+        this.setState({page})
+        break;
+      case 1:
+        page = this.state.page + 1
+        this.setState({page})
+    }
+
+    fetch(`http://www.omdbapi.com/?apikey=5d8af6ae&s=${this.state.searchTerm}&y=&plot=short&type=movie&page=${page}`)
+    .then(r => r.json())
+    .then(movieData => this.setState({ movies: movieData.Search }))
+    .catch((error) => console.log(error))
+  }
+
   render() {
     return (
       <div>
@@ -63,20 +138,10 @@ class App extends Component {
           null
         }
         <div className="content">
-          <h1>The Shoppies</h1>
+          <h1 className="title">the shoppies</h1>
           <SearchBar searchMovie={this.searchMovie}></SearchBar>
           <ViewChoice list={this.state.list} changeView={this.changeView}></ViewChoice>
-          {this.state.list ?
-            <MovieList movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MovieList>
-            :
-            <MoviePosters movies={this.state.movies} addToNominations={this.addToNominations} disableButton={this.disableButton}></MoviePosters>
-          }
-
-          {this.state.list ?
-            <ListNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></ListNominations>
-            :
-            <PosterNominations nominations={this.state.nominations} removeFromNominations={this.removeFromNominations}></PosterNominations>
-          }
+          {this.showView()}
         </div>
       </div>
     );
