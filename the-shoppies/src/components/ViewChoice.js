@@ -4,7 +4,7 @@ class ViewChoice extends Component {
 
     render() {
         return(
-            <form>
+            <form className="form">
                 <label>
                     <input
                         type="radio"

@@ -5,7 +5,7 @@ class ListNominations extends Component {
     render() {
         return (
             <div className="split right">
-                Your Nominations
+                <h2>Your Nominations:</h2>
                 <ul>
                     {this.props.nominations.map(nomination => <NominationCard key={nomination.imdbID} nomination={nomination} removeFromNominations={this.props.removeFromNominations}></NominationCard>)}
                 </ul>
