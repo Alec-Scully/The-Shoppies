@@ -16,9 +16,24 @@ code {
     monospace;
 }
 
+.main-container {
+  max-width: 100vmax;
+}
+
 .title{
   color: #008060;
   font-weight: 800;
+  position: relative;
+  width: 50%;
+  left: 13%;
+  font-style: italic;
+}
+
+.shoppies-logo {
+  max-width: 45px;
+  position: relative;
+  left: 6%;
+  top: 4rem;
 }
 
 .search-card {
@@ -32,6 +47,7 @@ code {
 
 .search-field {
   width: 100%;
+  height: 35px;
 }
 
 .form {
@@ -39,6 +55,10 @@ code {
   position: relative;
   left: 3%;
   top: 10px;
+}
+
+.form-container {
+  z-index: -1;
 }
 
 /* ************************ */
@@ -72,22 +92,20 @@ code {
   height: 25rem;
   display: inline-block;
   margin: 1rem 2rem;
-  border: black solid 1px;
-  box-shadow: 3px 4px #004d3e;
   color: #212427;
 }
 
 .movie-card img {
-  height: 90%;
+  max-height: 90%;
 }
 
 .poster-container {
   padding: 1rem;
-  width: 90%;
+  width: 94.4%;
   height: 35rem;
   border-radius: 6px;
   display: inline-block;
-  margin: 1rem 2rem;
+  margin: 1rem 1rem;
   border: black solid 1px;
   box-shadow: 3px 4px #004d3e ;
   right: 0;
@@ -97,11 +115,11 @@ code {
 
 .poster-nominations {
   padding: 1rem;
-  width: 90%;
-  height: 20rem;
+  width: 94.4%;
+  height: 23rem;
   border-radius: 6px;
   display: inline-block;
-  margin: 1rem 2rem;
+  margin: 1rem 1rem;
   border: black solid 1px;
   box-shadow: 3px 4px #004d3e ;
   right: 0;
@@ -121,6 +139,7 @@ code {
   top: 0;
   width: 100%;
   text-align: center;
+  z-index: 1;
 }
 
 .content {
@@ -132,18 +151,15 @@ code {
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%
 }
 
 .sticky + .content {
   padding-top: 102px;
 }
 
-.title {
-  font-style: italic;
-}
-
 /* ************************ */
+
+/* ******* BUTTONS ******** */
 
 .button {
   background-color: #008060;
@@ -178,21 +194,42 @@ code {
   bottom:0;
 }
 
-.prev {
+.list-prev {
   position: relative;
   bottom: 0;
   left: 11%;
 }
 
-.next {
+.list-next {
   position: relative;
   bottom: 0;
   left: 64%;
 }
 
-.search-results {
+.list-search-results {
   position: relative;
   bottom: 100;
   left: 30%;
   color: #212427;
 }
+
+.poster-prev {
+  position: relative;
+  bottom: 0;
+  left: 19%;
+}
+
+.poster-next {
+  position: relative;
+  bottom: 0;
+  left: 70%;
+}
+
+.poster-search-results {
+  position: relative;
+  bottom: 100;
+  left: 42%;
+  color: #212427;
+}
+
+/* ************************ */

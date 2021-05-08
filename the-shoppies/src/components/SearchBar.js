@@ -15,7 +15,7 @@ class SearchBar extends Component {
         return(
             <div className="search-card">
                 <form className="search-bar">
-                    <p>Movie title</p>
+                    <h2>Movie Title:</h2>
                     <input onChange={(e) => this.setTitle(e.target.value)} className="search-field" name="title-search" type="text" placeholder="Enter a Movie Title to Search!"></input>
                 </form>
             </div>

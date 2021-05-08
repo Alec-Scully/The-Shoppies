@@ -6,7 +6,7 @@ import PosterNominations from './components/Poster/PosterNominations';
 import SearchBar from './components/SearchBar.js';
 import ViewChoice from './components/ViewChoice.js'
 import Header from './components/Header.js'
-// import Banner from 'react-js-banner'
+import ShoppiesLogo from './shoppies-logo.png'
 
 class App extends Component {
 
@@ -132,14 +132,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         {this.state.nominations.length >= 5 ?
           <Header></Header>
           :
           null
         }
         <div className="content">
-          <h1 className="title">the shoppies</h1>
+          <img className="shoppies-logo" src={ShoppiesLogo}></img>
+          <h1 className="title">The Shoppies</h1>
           <SearchBar searchMovie={this.searchMovie}></SearchBar>
           <ViewChoice list={this.state.list} changeView={this.changeView}></ViewChoice>
           {this.showView()}

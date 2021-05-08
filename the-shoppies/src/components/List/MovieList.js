@@ -14,9 +14,9 @@ class MovieList extends Component {
                     :
                     null
                 }
-                <button className="button prev" onClick={() => this.props.changePage(0)} disabled={this.props.disablePageButton(0)}> Prev </button> 
-                <button className="button next" onClick={() => this.props.changePage(1)} disabled={this.props.disablePageButton(1)}> Next </button>
-                <p className="search-results"> {`Showing Results ${(this.props.page * 10) - 9} - ${this.props.page * 10} out of ${this.props.totalResults}`} </p> 
+                <button className="button list-prev" onClick={() => this.props.changePage(0)} disabled={this.props.disablePageButton(0)}> Prev </button> 
+                <button className="button list-next" onClick={() => this.props.changePage(1)} disabled={this.props.disablePageButton(1)}> Next </button>
+                <p className="list-search-results"> {`Showing Results ${(this.props.page * 10) - 9} - ${this.props.page * 10} out of ${this.props.totalResults}`} </p> 
             </div>
         )
     }

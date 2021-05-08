@@ -5,14 +5,10 @@ class PosterNominations extends Component {
     render(){
         return (
             <div className="poster-nominations">
-                This is my Nominations Component
-                {this.props.nominations ?
+                <h2>Your Nominations:</h2>
                 <ul>
-
                     {this.props.nominations.map(nomination => <NominationCard key={nomination.imdbID} nomination={nomination} removeFromNominations={this.props.removeFromNominations}></NominationCard>)}
                 </ul>
-                            :
-                            null}
             </div>
         )
     }
