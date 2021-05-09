@@ -21,7 +21,10 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({ nominations: JSON.parse(localStorage.getItem("Nominations")) })
+    let localNoms = JSON.parse(localStorage.getItem("Nominations"))
+    if (localNoms !== null) {
+      this.setState({ nominations: JSON.parse(localStorage.getItem("Nominations")) })
+    }
   }
 
   searchMovie = (title) => {
@@ -133,7 +136,7 @@ class App extends Component {
   render() {
     return (
       <div className="main-container">
-        {this.state.nominations.length >= 5 ?
+        {this.state.nominations && this.state.nominations.length >= 5 ?
           <Header></Header>
           :
           null
