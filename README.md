@@ -2,6 +2,13 @@
 
 Welcome to my submission to the [Shopify](https://www.shopify.com/) Fall 2021 Web Developer Intern Challenge!
 
+### To run this app after cloning:
+```javascript
+  cd the-shoppies
+  npm install
+  npm start
+```
+
 ## Challenge Prompt: 
 Shopify has branched out into movie award shows and we need your help. Please build us an app to help manage our movie nominations for the upcoming Shoppies.
 
