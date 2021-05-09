@@ -30,7 +30,7 @@ class App extends Component {
   searchMovie = (title) => {
     this.setState({ searchTerm: title })
     this.setState({ page: 1 })
-    fetch(`http://www.omdbapi.com/?apikey=5d8af6ae&s=${title}&y=&plot=short&type=movie&page=1`)
+    fetch(`https://www.omdbapi.com/?apikey=5d8af6ae&s=${title}&y=&plot=short&type=movie&page=1`)
       .then(r => r.json())
       .then(movieData => this.setState({
         movies: movieData.Search,
@@ -106,7 +106,7 @@ class App extends Component {
         this.setState({ page })
     }
 
-    fetch(`http://www.omdbapi.com/?apikey=5d8af6ae&s=${this.state.searchTerm}&y=&plot=short&type=movie&page=${page}`)
+    fetch(`https://www.omdbapi.com/?apikey=5d8af6ae&s=${this.state.searchTerm}&y=&plot=short&type=movie&page=${page}`)
       .then(r => r.json())
       .then(movieData => this.setState({ movies: movieData.Search }))
       .catch((error) => console.log(error))
